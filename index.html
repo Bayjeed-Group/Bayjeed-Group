@@ -1,0 +1,2764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bayjeed Global</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333333;
+            background-color: #FFFFFF;
+            overflow-x: hidden;
+        }
+
+        /* Colors */
+        :root {
+            /* Associates Colors */
+            --navy: #0A192F;
+            --gold: #D4AF37;
+            --gold-light: #F5E8C7;
+            --gold-dark: #B8860B;
+            
+            /* Foundation Colors - Blue Theme */
+            --foundation-primary: #0B4BA2;
+            --foundation-secondary: #2C5282;
+            --foundation-gray: #718096;
+            --foundation-light: #EDF2F7;
+            --foundation-white: #FFFFFF;
+            
+            --gray-light: #F8F9FA;
+            --gray-medium: #6C757D;
+            --gray-dark: #343A40;
+            --white: #FFFFFF;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Global Header - For Both Organizations */
+        .global-header {
+            background-color: var(--white);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .global-header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .global-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--navy);
+            text-decoration: none;
+        }
+
+        .global-logo span {
+            color: var(--gold);
+        }
+
+        .global-nav a {
+            color: var(--navy);
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 8px 0;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .global-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--gold);
+            transition: width 0.3s;
+        }
+
+        .global-nav a:hover::after {
+            width: 100%;
+        }
+
+        .global-nav a.foundation-link:hover::after {
+            background-color: var(--foundation-primary);
+        }
+
+        /* Gateway Page */
+        .gateway-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .gateway-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: var(--navy);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .gateway-subtitle {
+            font-size: 1.2rem;
+            color: var(--gray-medium);
+            margin-bottom: 60px;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        .organization-options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .org-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 50px 40px;
+            width: 320px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border-top: 5px solid var(--gold);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .org-card.foundation {
+            border-top-color: var(--foundation-primary);
+        }
+
+        .org-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .org-card.foundation:hover {
+            border-top-color: var(--foundation-secondary);
+        }
+
+        .org-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gold-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            color: var(--gold-dark);
+            font-size: 2rem;
+        }
+
+        .org-card.foundation .org-icon {
+            background: var(--foundation-light);
+            color: var(--foundation-primary);
+        }
+
+        .org-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--navy);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .org-card.foundation .org-name {
+            color: var(--foundation-primary);
+        }
+
+        .org-tagline {
+            color: var(--gray-medium);
+            font-size: 1rem;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .org-description {
+            color: var(--gray-dark);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            flex-grow: 1;
+        }
+
+        .select-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--gold);
+            color: var(--navy);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .org-card.foundation .select-btn {
+            background: var(--foundation-primary);
+            color: var(--white);
+        }
+
+        .select-btn:hover {
+            background: var(--gold-dark);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .org-card.foundation .select-btn:hover {
+            background: var(--foundation-secondary);
+        }
+
+        /* Content Sections - Initially Hidden */
+        .content-section {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .content-section.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Back to Gateway Button */
+        .back-to-gateway {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            background: var(--navy);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+        }
+
+        .back-to-gateway:hover {
+            background: var(--gold);
+            color: var(--navy);
+            transform: scale(1.1);
+        }
+
+        /* Mobile Menu for Global Header */
+        .global-mobile-menu-btn {
+            display: none;
+            background: none;
+            border: 2px solid var(--navy);
+            color: var(--navy);
+            padding: 8px 12px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        /* ===== FOUNDATION STYLES ===== */
+        .foundation-header {
+            background-color: var(--white);
+            padding: 20px 0;
+            position: relative;
+            margin-top: 70px;
+            border-bottom: 1px solid var(--foundation-light);
+        }
+
+        .foundation-logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .foundation-logo-main {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--foundation-primary);
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
+
+        .foundation-logo-tagline {
+            font-size: 0.85rem;
+            color: var(--foundation-secondary);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .foundation-hero {
+            padding: 120px 0 80px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(237, 242, 247, 0.95) 100%);
+            position: relative;
+            text-align: center;
+        }
+
+        .foundation-hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--foundation-primary);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .foundation-hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--foundation-gray);
+            line-height: 1.8;
+            margin-bottom: 40px;
+            font-weight: 400;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .foundation-cta-button {
+            display: inline-block;
+            background: var(--foundation-primary);
+            color: var(--white);
+            border: none;
+            padding: 16px 42px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .foundation-cta-button:hover {
+            background: var(--foundation-secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(11, 75, 162, 0.3);
+        }
+
+        /* Foundation Sections */
+        .foundation-section {
+            padding: 80px 0;
+        }
+
+        .foundation-section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .foundation-section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--foundation-primary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .foundation-section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--foundation-primary);
+        }
+
+        /* About Foundation */
+        .foundation-about {
+            background-color: var(--white);
+        }
+
+        .foundation-about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .foundation-about-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--foundation-primary);
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .foundation-about-text p {
+            color: var(--foundation-gray);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .foundation-principles {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .foundation-principles li {
+            color: var(--foundation-gray);
+            padding: 8px 0;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .foundation-principles li:before {
+            content: '✓';
+            color: var(--foundation-primary);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .foundation-about-image {
+            height: 400px;
+            background: linear-gradient(135deg, var(--foundation-light), var(--white));
+            border: 1px solid #E9ECEF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--foundation-gray);
+            font-size: 1.1rem;
+            position: relative;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .foundation-about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Mission Vision */
+        .mission-vision-section {
+            background-color: var(--foundation-light);
+        }
+
+        .mission-vision-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .mission-vision-card {
+            background: var(--white);
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s;
+            border-radius: 4px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-top: 3px solid var(--foundation-primary);
+        }
+
+        .mission-vision-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .mission-vision-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--foundation-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: var(--foundation-primary);
+            font-size: 1.8rem;
+        }
+
+        .mission-vision-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--foundation-primary);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .mission-vision-text {
+            color: var(--foundation-gray);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Focus Areas */
+        .focus-areas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .focus-area-card {
+            background: var(--white);
+            padding: 35px 25px;
+            border: 1px solid var(--foundation-light);
+            transition: all 0.3s;
+            border-radius: 4px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .focus-area-card:hover {
+            border-color: var(--foundation-primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .focus-area-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--foundation-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--foundation-primary);
+            font-size: 1.5rem;
+        }
+
+        .focus-area-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--foundation-primary);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .focus-area-list {
+            list-style: none;
+            text-align: left;
+            margin-top: 15px;
+        }
+
+        .focus-area-list li {
+            color: var(--foundation-gray);
+            padding: 8px 0;
+            border-bottom: 1px solid var(--foundation-light);
+            position: relative;
+            padding-left: 25px;
+            font-size: 0.95rem;
+        }
+
+        .focus-area-list li:last-child {
+            border-bottom: none;
+        }
+
+        .focus-area-list li:before {
+            content: '•';
+            color: var(--foundation-primary);
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        /* Programs Section */
+        .programs-section {
+            background-color: var(--foundation-light);
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .program-card {
+            background: var(--white);
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 4px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            border: 1px solid var(--foundation-light);
+        }
+
+        .program-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            border-color: var(--foundation-primary);
+        }
+
+        .program-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--foundation-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--foundation-primary);
+            font-size: 1.3rem;
+        }
+
+        .program-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--foundation-primary);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .program-description {
+            color: var(--foundation-gray);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Donations Section */
+        .donations-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            align-items: start;
+        }
+
+        .donation-methods {
+            margin-top: 30px;
+        }
+
+        .donation-method {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: var(--foundation-light);
+            border-radius: 4px;
+            border-left: 4px solid var(--foundation-primary);
+        }
+
+        .donation-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--foundation-primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1rem;
+        }
+
+        .donation-method strong {
+            color: var(--foundation-primary);
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .donation-method p {
+            color: var(--foundation-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Funds Utilization */
+        .funds-utilization {
+            background-color: var(--foundation-light);
+        }
+
+        .utilization-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .utilization-item {
+            background: var(--white);
+            padding: 25px 20px;
+            text-align: center;
+            border-radius: 4px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--foundation-light);
+        }
+
+        .utilization-item:hover {
+            border-color: var(--foundation-primary);
+        }
+
+        .utilization-percentage {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--foundation-primary);
+            margin-bottom: 10px;
+        }
+
+        .utilization-name {
+            font-weight: 600;
+            color: var(--foundation-secondary);
+            margin-bottom: 10px;
+        }
+
+        .utilization-desc {
+            color: var(--foundation-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Contact Foundation */
+        .foundation-contact-section {
+            background-color: var(--white);
+            border-top: 1px solid var(--foundation-light);
+        }
+
+        .foundation-contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 60px;
+        }
+
+        .foundation-contact-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--foundation-primary);
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .foundation-contact-details {
+            margin-bottom: 40px;
+        }
+
+        .foundation-contact-item {
+            margin-bottom: 30px;
+            padding-left: 40px;
+            position: relative;
+        }
+
+        .foundation-contact-icon {
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--foundation-primary);
+            font-size: 1.2rem;
+        }
+
+        .foundation-contact-item strong {
+            color: var(--foundation-primary);
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .foundation-contact-item p {
+            color: var(--foundation-gray);
+            line-height: 1.6;
+        }
+
+        .foundation-leadership {
+            background: var(--foundation-light);
+            padding: 25px;
+            border-radius: 4px;
+            border-left: 4px solid var(--foundation-primary);
+            margin-top: 30px;
+        }
+
+        .foundation-leadership strong {
+            color: var(--foundation-primary);
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .foundation-contact-form input,
+        .foundation-contact-form textarea,
+        .foundation-contact-form select {
+            width: 100%;
+            padding: 16px;
+            margin-bottom: 20px;
+            background: var(--white);
+            border: 1px solid #DEE2E6;
+            color: var(--foundation-gray);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+            border-radius: 4px;
+        }
+
+        .foundation-contact-form input:focus,
+        .foundation-contact-form textarea:focus,
+        .foundation-contact-form select:focus {
+            outline: none;
+            border-color: var(--foundation-primary);
+            box-shadow: 0 0 0 3px rgba(11, 75, 162, 0.1);
+        }
+
+        .foundation-contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .foundation-contact-form button {
+            background: var(--foundation-primary);
+            color: var(--white);
+            border: none;
+            padding: 16px 40px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            border-radius: 4px;
+        }
+
+        .foundation-contact-form button:hover {
+            background: var(--foundation-secondary);
+        }
+
+        /* Foundation Footer */
+        .foundation-footer {
+            background: var(--foundation-primary);
+            padding: 60px 0 30px;
+        }
+
+        .foundation-footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--white);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .foundation-footer-column p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .foundation-footer-column h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--white);
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .foundation-footer-links {
+            list-style: none;
+        }
+
+        .foundation-footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .foundation-footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .foundation-footer-links a:hover {
+            color: var(--white);
+            padding-left: 10px;
+        }
+
+        .foundation-copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Leadership Team Grid */
+        .leadership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .leader-card {
+            background: var(--white);
+            padding: 25px 20px;
+            text-align: center;
+            border-radius: 4px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-top: 3px solid var(--foundation-primary);
+            transition: all 0.3s;
+            border: 1px solid var(--foundation-light);
+        }
+
+        .leader-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-color: var(--foundation-primary);
+        }
+
+        .leader-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--foundation-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            color: var(--foundation-primary);
+            font-size: 1.5rem;
+        }
+
+        .leader-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--foundation-primary);
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .leader-position {
+            color: var(--foundation-secondary);
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .leader-description {
+            color: var(--foundation-gray);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Email Styling */
+        .email-address {
+            color: var(--foundation-primary);
+            font-weight: 600;
+        }
+
+        /* Address Styling */
+        .address-text {
+            color: var(--foundation-gray);
+        }
+
+        /* Position Title Styling */
+        .position-title {
+            color: var(--foundation-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .gateway-title {
+                font-size: 2.8rem;
+            }
+
+            .foundation-about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .foundation-hero-title {
+                font-size: 2.2rem;
+            }
+
+            .foundation-principles {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gateway-title {
+                font-size: 2.2rem;
+            }
+
+            .gateway-subtitle {
+                font-size: 1.1rem;
+                padding: 0 20px;
+            }
+
+            .organization-options {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .org-card {
+                width: 100%;
+                max-width: 320px;
+            }
+
+            .global-mobile-menu-btn {
+                display: block;
+            }
+
+            .global-nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background: var(--white);
+                padding: 20px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                border-radius: 0 0 0 8px;
+                flex-direction: column;
+            }
+
+            .global-nav.active {
+                display: flex;
+            }
+
+            .global-nav a {
+                margin: 10px 0;
+            }
+
+            .foundation-hero {
+                padding: 100px 0 60px;
+            }
+
+            .foundation-section {
+                padding: 60px 0;
+            }
+
+            .foundation-section-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .foundation-contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Import All Existing Bayjeed & Associates Styles */
+        /* Associates-specific styles */
+        .associates-logo-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .associates-logo-main {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--navy);
+            letter-spacing: 0.5px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .associates-logo-main span {
+            color: var(--gold);
+        }
+
+        .associates-logo-tagline {
+            font-size: 0.75rem;
+            color: var(--gray-medium);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 500;
+            margin-top: 3px;
+        }
+
+        /* Navigation for Associates */
+        .associates-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        .associates-nav ul li a {
+            color: var(--navy);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            padding: 5px 0;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .associates-nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--gold);
+            transition: width 0.3s;
+        }
+
+        .associates-nav ul li a:hover {
+            color: var(--gold-dark);
+        }
+
+        .associates-nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 120px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,249,250,0.95) 100%);
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.2rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--gray-dark);
+            line-height: 1.8;
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--navy);
+            border: none;
+            padding: 16px 42px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .cta-button:hover {
+            background: var(--gold-dark);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--navy);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--gold);
+        }
+
+        /* About Section */
+        .about-section {
+            background-color: var(--white);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--navy);
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .about-text p {
+            color: var(--gray-dark);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .expertise-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .expertise-list li {
+            color: var(--gray-dark);
+            padding: 8px 0;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .expertise-list li:before {
+            content: '✓';
+            color: var(--gold);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .about-image {
+            height: 500px;
+            background: linear-gradient(135deg, var(--gray-light), #FFFFFF);
+            border: 1px solid #E9ECEF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-medium);
+            font-size: 1.1rem;
+            position: relative;
+            border-radius: 4px;
+        }
+
+        /* Team Section */
+        .team-section {
+            background-color: var(--gray-light);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .team-card {
+            background: var(--white);
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s;
+            border-radius: 4px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-top: 3px solid var(--gold);
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .member-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gold-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: var(--gold-dark);
+            font-size: 1.8rem;
+        }
+
+        .team-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--navy);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .team-qualification {
+            color: var(--gold-dark);
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .team-description {
+            color: var(--gray-medium);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .team-phone {
+            color: var(--navy);
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-top: 15px;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 40px 30px;
+            border: 1px solid #E9ECEF;
+            transition: all 0.3s;
+            border-radius: 4px;
+        }
+
+        .service-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gold-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            color: var(--gold-dark);
+            font-size: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--navy);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .service-list {
+            list-style: none;
+        }
+
+        .service-list li {
+            color: var(--gray-dark);
+            padding: 10px 0;
+            border-bottom: 1px solid #F1F3F5;
+            position: relative;
+            padding-left: 25px;
+            font-size: 1rem;
+        }
+
+        .service-list li:last-child {
+            border-bottom: none;
+        }
+
+        .service-list li:before {
+            content: '•';
+            color: var(--gold);
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background-color: var(--white);
+            border-top: 1px solid #E9ECEF;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 60px;
+        }
+
+        .contact-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--navy);
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .contact-details {
+            margin-bottom: 40px;
+        }
+
+        .contact-item {
+            margin-bottom: 30px;
+            padding-left: 40px;
+            position: relative;
+        }
+
+        .contact-icon {
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+
+        .contact-item strong {
+            color: var(--navy);
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .contact-item p {
+            color: var(--gray-dark);
+            line-height: 1.6;
+        }
+
+        .hours {
+            background: var(--gray-light);
+            padding: 25px;
+            border-radius: 4px;
+            border-left: 4px solid var(--gold);
+        }
+
+        .hours strong {
+            color: var(--navy);
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form select {
+            width: 100%;
+            padding: 16px;
+            margin-bottom: 20px;
+            background: var(--white);
+            border: 1px solid #DEE2E6;
+            color: var(--gray-dark);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+            border-radius: 4px;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus,
+        .contact-form select:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .contact-form button {
+            background: var(--gold);
+            color: var(--navy);
+            border: none;
+            padding: 16px 40px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            border-radius: 4px;
+        }
+
+        .contact-form button:hover {
+            background: var(--gold-dark);
+            color: var(--white);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--navy);
+            padding: 60px 0 30px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .footer-column p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .footer-column h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--gold);
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+            padding-left: 10px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive for Associates */
+        @media (max-width: 992px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .associates-nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--white);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                border-top: 2px solid var(--gold);
+            }
+            
+            .associates-nav ul.active {
+                display: flex;
+            }
+            
+            .associates-nav ul li {
+                text-align: center;
+            }
+            
+            .hero {
+                padding: 150px 0 80px;
+            }
+            
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            section {
+                padding: 80px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .expertise-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Global Header -->
+    <header class="global-header">
+        <div class="container global-header-container">
+            <a href="#" class="global-logo" id="globalLogo">BAYJEED <span>GLOBAL</span></a>
+            
+            <button class="global-mobile-menu-btn" id="globalMobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav class="global-nav" id="globalNav">
+                <a href="#" id="showGateway">Home</a>
+                <a href="#" id="showAssociates">Associates</a>
+                <a href="#" id="showFoundation" class="foundation-link">Foundation</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Gateway Page (Initial View) -->
+    <div class="gateway-page" id="gatewayPage">
+        <div class="container">
+            <h1 class="gateway-title">Welcome to Bayjeed Global</h1>
+            <p class="gateway-subtitle">
+                Two organizations, one vision of excellence. Choose the entity you wish to explore:
+            </p>
+            
+            <div class="organization-options">
+                <div class="org-card" id="associatesCard">
+                    <div class="org-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h2 class="org-name">Bayjeed & Associates</h2>
+                    <p class="org-tagline">Advocates & Legal Consultants</p>
+                    <p class="org-description">
+                        Premier legal firm with over a decade of experience in Supreme Court, 
+                        High Court & Mumbai litigation. Specializing in civil/criminal cases, 
+                        property matters, and family disputes.
+                    </p>
+                    <button class="select-btn" id="selectAssociates">Explore Legal Services</button>
+                </div>
+                
+                <div class="org-card foundation" id="foundationCard">
+                    <div class="org-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h2 class="org-name" style="color: var(--foundation-primary);">Bayjeed Foundation</h2>
+                    <p class="org-tagline">Non-Profit Organization</p>
+                    <p class="org-description">
+                        Working for social welfare across India for over 10 years. Empowering 
+                        individuals through education, healthcare, legal awareness, and community 
+                        support to build an inclusive society.
+                    </p>
+                    <button class="select-btn" id="selectFoundation">Explore Foundation</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bayjeed & Associates Content (Hidden Initially) -->
+    <div class="content-section" id="associatesContent">
+        <!-- Header for Associates -->
+        <header class="associates-header" style="background-color: var(--white); padding: 20px 0; position: relative; margin-top: 70px;">
+            <div class="container header-container">
+                <div class="associates-logo-container">
+                    <div class="associates-logo-main">BAYJEED & <span>ASSOCIATES</span></div>
+                    <div class="associates-logo-tagline">ADVOCATES & LEGAL CONSULTANTS</div>
+                </div>
+                
+                <nav class="associates-nav">
+                    <ul id="associatesNavMenu">
+                        <li><a href="#associatesHome">Home</a></li>
+                        <li><a href="#associatesAbout">About</a></li>
+                        <li><a href="#associatesTeam">Our Team</a></li>
+                        <li><a href="#associatesServices">Services</a></li>
+                        <li><a href="#associatesContact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero" id="associatesHome">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Expert Legal Representation for Over a Decade</h1>
+                    <p class="hero-subtitle">
+                        Premier legal firm specializing in Supreme Court, High Court & Mumbai litigation. 
+                        Comprehensive legal solutions for civil/criminal cases, property matters, family disputes, 
+                        and specialized expertise in MHADA, SRA, BMC, and redevelopment matters.
+                    </p>
+                    <a href="#associatesContact" class="cta-button">Schedule Consultation</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about-section" id="associatesAbout">
+            <div class="container">
+                <div class="section-title">
+                    <h2>About Our Firm</h2>
+                </div>
+                
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>A Legacy of Legal Excellence</h3>
+                        <p>Bayjeed & Associates represents over ten years of distinguished legal practice, providing exceptional representation across all levels of judiciary. Our firm combines deep legal expertise with a commitment to achieving the best outcomes for our clients.</p>
+                        <p>With extensive experience in Mumbai-specific legal challenges and nationwide litigation, we offer comprehensive legal solutions tailored to each client's unique needs.</p>
+                        
+                        <h4 style="color: var(--navy); margin-top: 30px; margin-bottom: 15px;">Our Core Expertise:</h4>
+                        <ul class="expertise-list">
+                            <li>Supreme Court & High Court Litigation</li>
+                            <li>Property & Redevelopment Law</li>
+                            <li>MHADA, SRA, BMC Matters</li>
+                            <li>Civil & Criminal Litigation</li>
+                            <li>Family & Consumer Disputes</li>
+                            <li>Legal Documentation & Registration</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="about-image">
+                        <div style="text-align: center;">
+                            <div style="font-size: 1.2rem; color: var(--gray-medium);">
+                                <i class="fas fa-balance-scale" style="font-size: 2.5rem; margin-bottom: 20px; color: var(--gold); display: block;"></i>
+                                <div>Photo of Meraj Khan, Founder</div>
+                                <div style="font-size: 0.9rem; margin-top: 10px; color: var(--gray-medium);">Principal Legal Consultant</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="team-section" id="associatesTeam">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Our Legal Team</h2>
+                </div>
+                
+                <div class="team-grid">
+                    <div class="team-card">
+                        <div class="member-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h3 class="team-name">Nafisa M. Khan</h3>
+                        <p class="team-qualification">Advocate, High Court of Bombay</p>
+                        <p class="team-description">B.COM, M.COM, LLB<br>Specializing in Civil Litigation & Property Law</p>
+                        <p class="team-phone">+91 8850765608</p>
+                    </div>
+                    
+                    <div class="team-card">
+                        <div class="member-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h3 class="team-name">Shabana M.A. Inamdar</h3>
+                        <p class="team-qualification">Advocate, High Court of Bombay</p>
+                        <p class="team-description">B.COM, LLB<br>Expert in Family Law & Legal Documentation</p>
+                        <p class="team-phone">+91 8693061502</p>
+                    </div>
+                    
+                    <div class="team-card">
+                        <div class="member-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h3 class="team-name">Firoz M.M. Khan</h3>
+                        <p class="team-qualification">Advocate, High Court of Bombay</p>
+                        <p class="team-description">B.COM, LLB<br>Specializing in Criminal & Civil Litigation</p>
+                        <p class="team-phone">+91 8850523677</p>
+                    </div>
+                    
+                    <div class="team-card">
+                        <div class="member-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h3 class="team-name">Faizee N. Shaikh</h3>
+                        <p class="team-qualification">Advocate, High Court of Bombay</p>
+                        <p class="team-description">B.COM, LLB<br>Expert in Consumer & Co-operative Matters</p>
+                        <p class="team-phone">+91 7208516229</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="associatesServices">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Our Legal Services</h2>
+                </div>
+                
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-gavel"></i>
+                        </div>
+                        <h3>Court Litigation</h3>
+                        <ul class="service-list">
+                            <li>Supreme Court Representation</li>
+                            <li>High Court Advocacy</li>
+                            <li>District Court Litigation</li>
+                            <li>Civil & Criminal Cases</li>
+                            <li>E-Filing of Court Cases</li>
+                            <li>Appeals & Revisions</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h3>Property & Redevelopment</h3>
+                        <ul class="service-list">
+                            <li>MHADA Matters & Disputes</li>
+                            <li>SRA Rehabilitation Cases</li>
+                            <li>BMC Legal Issues</li>
+                            <li>Property Registration</li>
+                            <li>Redevelopment Agreements</li>
+                            <li>Collector Office Matters</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h3>Family & Dispute Resolution</h3>
+                        <ul class="service-list">
+                            <li>Divorce & Family Disputes</li>
+                            <li>Consumer Court Matters</li>
+                            <li>Labour & Employment Disputes</li>
+                            <li>Co-operative Society Matters</li>
+                            <li>Will Registration & Probate</li>
+                            <li>Inheritance & Succession</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-file-contract"></i>
+                        </div>
+                        <h3>Legal Documentation</h3>
+                        <ul class="service-list">
+                            <li>Contracts, MOUs & Agreements</li>
+                            <li>Legal Notices & Drafting</li>
+                            <li>Leave & License Agreements</li>
+                            <li>Affidavits & Declarations</li>
+                            <li>Legal Opinions</li>
+                            <li>Sale & Deed Registration</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section" id="associatesContact">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Contact Us</h2>
+                </div>
+                
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h3>Schedule a Consultation</h3>
+                        
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <strong>Office Address</strong>
+                                <p>
+                                    Shop No.08, B Wing, Dheeraj Arma Rehab Building,<br>
+                                    Anant Kanekar Marg, Beside M.S.E.B,<br>
+                                    Bandra East, Mumbai - 400051
+                                </p>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <strong>Phone Numbers</strong>
+                                <p>+91 8693061502 / +91 8850765608</p>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <strong>Email Address</strong>
+                                <p>bayjeedandassociates@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="hours">
+                            <strong>Consultation Hours</strong>
+                            <p>Monday to Saturday: 11:00 AM to 7:00 PM</p>
+                            <p style="font-size: 0.9rem; color: var(--gray-medium); margin-top: 10px;">
+                                <i class="fas fa-clock" style="margin-right: 10px;"></i> By appointment
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form">
+                        <form id="associatesConsultationForm">
+                            <input type="text" placeholder="Your Full Name" required>
+                            <input type="tel" placeholder="Phone Number" required>
+                            <input type="email" placeholder="Email Address" required>
+                            <select required>
+                                <option value="">Select Legal Matter</option>
+                                <option value="property">Property/Redevelopment</option>
+                                <option value="court">Court Litigation</option>
+                                <option value="family">Family Law</option>
+                                <option value="documentation">Legal Documentation</option>
+                                <option value="consumer">Consumer/Labour Dispute</option>
+                                <option value="society">Co-operative Society Matter</option>
+                                <option value="other">Other Legal Issue</option>
+                            </select>
+                            <textarea placeholder="Brief Description of Your Legal Matter" required></textarea>
+                            <button type="submit">
+                                <i class="fas fa-paper-plane" style="margin-right: 10px;"></i>Request Legal Consultation
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="footer-container">
+                    <div class="footer-column">
+                        <div class="footer-logo">BAYJEED & ASSOCIATES</div>
+                        <p>Advocates & Legal Consultants providing comprehensive legal solutions for over ten years. Your trusted partners for expert legal representation across all levels of judiciary.</p>
+                        <p style="color: var(--gold); font-weight: 500;">ADVOCATES HIGH COURT OF BOMBAY</p>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h3>Quick Links</h3>
+                        <ul class="footer-links">
+                            <li><a href="#associatesHome">Home</a></li>
+                            <li><a href="#associatesAbout">About Our Firm</a></li>
+                            <li><a href="#associatesTeam">Our Legal Team</a></li>
+                            <li><a href="#associatesServices">Legal Services</a></li>
+                            <li><a href="#associatesContact">Contact & Consultation</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h3>Contact Information</h3>
+                        <p><i class="fas fa-phone" style="color: var(--gold); margin-right: 15px;"></i> +91 8693061502</p>
+                        <p><i class="fas fa-phone" style="color: var(--gold); margin-right: 15px;"></i> +91 8850765608</p>
+                        <p><i class="fas fa-envelope" style="color: var(--gold); margin-right: 15px;"></i> bayjeedandassociates@gmail.com</p>
+                        <p><i class="fas fa-map-marker-alt" style="color: var(--gold); margin-right: 15px;"></i> Bandra East, Mumbai 400051</p>
+                    </div>
+                </div>
+                
+                <div class="copyright">
+                    <p>&copy; <span class="currentYear"></span> Bayjeed & Associates. All Rights Reserved.</p>
+                    <p style="margin-top: 10px;">Advocates & Legal Consultants | High Court of Bombay</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Bayjeed Foundation Content -->
+    <div class="content-section" id="foundationContent">
+        <!-- Foundation Header -->
+        <header class="foundation-header">
+            <div class="container">
+                <div class="foundation-logo-container">
+                    <div class="foundation-logo-main">BAYJEED <span style="color: var(--foundation-primary);">FOUNDATION</span></div>
+                    <div class="foundation-logo-tagline" style="color: var(--foundation-secondary);">NON-PROFIT ORGANIZATION</div>
+                    <p style="color: var(--foundation-primary); font-weight: 500; font-size: 0.9rem; margin-top: 5px;">
+                        Working for Social Welfare Across India Since 10 Years
+                    </p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Foundation Hero Section -->
+        <section class="foundation-hero" id="foundationHome">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="foundation-hero-title" style="color: var(--foundation-primary);">Empowering Communities, Transforming Lives</h1>
+                    <p class="foundation-hero-subtitle" style="color: var(--foundation-gray);">
+                        Bayjeed Foundation is a non-profit organization dedicated to social welfare across India for over a decade. 
+                        We work to support underprivileged and marginalized communities through education, healthcare, legal awareness, 
+                        and community support initiatives.
+                    </p>
+                    <a href="#foundationDonate" class="foundation-cta-button">Support Our Cause</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Foundation Section -->
+        <section class="foundation-about foundation-section" id="foundationAbout">
+            <div class="container">
+                <div class="foundation-section-title">
+                    <h2 style="color: var(--foundation-primary);">About Our Foundation</h2>
+                </div>
+                
+                <div class="foundation-about-content">
+                    <div class="foundation-about-text">
+                        <h3 style="color: var(--foundation-primary);">A Decade of Social Service</h3>
+                        <p style="color: var(--foundation-gray);">Bayjeed Foundation has been working tirelessly for over 10 years across India to support underprivileged and marginalized communities. Established with a vision to create positive social change, our foundation is driven by transparency, compassion, and measurable impact.</p>
+                        <p style="color: var(--foundation-gray);">We believe in empowering individuals and communities through holistic development programs that address education, healthcare, legal awareness, and basic needs.</p>
+                        
+                        <h4 style="color: var(--foundation-primary); margin-top: 30px; margin-bottom: 15px;">Our Core Principles:</h4>
+                        <ul class="foundation-principles">
+                            <li>Transparency in Operations</li>
+                            <li>Compassionate Service</li>
+                            <li>Measurable Impact</li>
+                            <li>Community-Centric Approach</li>
+                            <li>Ethical Governance</li>
+                            <li>Sustainable Solutions</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="foundation-about-image">
+                        <div style="text-align: center; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; background: linear-gradient(135deg, rgba(237, 242, 247, 0.9), rgba(255, 255, 255, 0.9));">
+                            <i class="fas fa-user-tie" style="font-size: 3.5rem; margin-bottom: 20px; color: var(--foundation-primary); display: block;"></i>
+                            <div style="font-size: 1.5rem; margin-bottom: 10px; color: var(--foundation-primary);">MERAJ KHAN</div>
+                            <div style="font-size: 1.1rem; margin-bottom: 5px; color: var(--foundation-secondary);">President, All India</div>
+                            <div style="font-size: 0.9rem; color: var(--foundation-gray);">Bayjeed Foundation</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission & Vision Section -->
+        <section class="mission-vision-section foundation-section" id="foundationMission">
+            <div class="container">
+                <div class="foundation-section-title">
+                    <h2 style="color: var(--foundation-primary);">Our Mission & Vision</h2>
+                </div>
+                
+                <div class="mission-vision-grid">
+                    <div class="mission-vision-card">
+                        <div class="mission-vision-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h3 class="mission-vision-title" style="color: var(--foundation-primary);">Our Mission</h3>
+                        <p class="mission-vision-text" style="color: var(--foundation-gray);">
+                            To empower individuals through education, healthcare, legal awareness, and community support. 
+                            We strive to create opportunities for underprivileged communities and ensure access to basic 
+                            rights and resources for all.
+                        </p>
+                    </div>
+                    
+                    <div class="mission-vision-card">
+                        <div class="mission-vision-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3 class="mission-vision-title" style="color: var(--foundation-primary);">Our Vision</h3>
+                        <p class="mission-vision-text" style="color: var(--foundation-gray);">
+                            To build an inclusive society with equal access to opportunities and justice. We envision 
+                            an India where every individual, regardless of their background, has the resources and 
+                            support needed to lead a dignified life.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Focus Areas Section -->
+        <section class="foundation-section" id="foundationFocus">
+            <div class="container">
+                <div class="foundation-section-title">
+                    <h2 style="color: var(--foundation-primary);">Our Focus Areas</h2>
+                </div>
+                
+                <div class="focus-areas-grid">
+                    <div class="focus-area-card">
+                        <div class="focus-area-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3 style="color: var(--foundation-primary);">Education Support</h3>
+                        <p style="color: var(--foundation-gray);">Providing educational opportunities to underprivileged children and youth.</p>
+                        <ul class="focus-area-list">
+                            <li>Tuition assistance</li>
+                            <li>Books & study materials</li>
+                            <li>Scholarships</li>
+                            <li>Educational workshops</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="focus-area-card">
+                        <div class="focus-area-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <h3 style="color: var(--foundation-primary);">Healthcare & Medical Assistance</h3>
+                        <p style="color: var(--foundation-gray);">Ensuring access to healthcare services for marginalized communities.</p>
+                        <ul class="focus-area-list">
+                            <li>Medical camps</li>
+                            <li>Medicine distribution</li>
+                            <li>Health awareness programs</li>
+                            <li>Emergency medical aid</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="focus-area-card">
+                        <div class="focus-area-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <h3 style="color: var(--foundation-primary);">Legal Aid & Awareness</h3>
+                        <p style="color: var(--foundation-gray);">Empowering communities through legal knowledge and assistance.</p>
+                        <ul class="focus-area-list">
+                            <li>Free legal guidance</li>
+                            <li>Legal awareness workshops</li>
+                            <li>Documentation support</li>
+                            <li>Rights awareness programs</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="focus-area-card">
+                        <div class="focus-area-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 style="color: var(--foundation-primary);">Community Welfare</h3>
+                        <p style="color: var(--foundation-gray);">Supporting holistic community development initiatives.</p>
+                        <ul class="focus-area-list">
+                            <li>Skill development programs</li>
+                            <li>Women empowerment</li>
+                            <li>Senior citizen support</li>
+                            <li>Disaster relief</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Programs Section -->
+        <section class="programs-section foundation-section" id="foundationPrograms">
+            <div class="container">
+                <div class="foundation-section-title">
+                    <h2 style="color: var(--foundation-primary);">Our Programs & Activities</h2>
+                </div>
+                
+                <div class="programs-grid">
+                    <div class="program-card">
+                        <div class="program-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h4 class="program-name" style="color: var(--foundation-primary);">Educational Support Programs</h4>
+                        <p class="program-description" style="color: var(--foundation-gray);">Scholarships, tuition support, and learning materials for underprivileged students.</p>
+                    </div>
+                    
+                    <div class="program-card">
+                        <div class="program-icon">
+                            <i class="fas fa-medkit"></i>
+                        </div>
+                        <h4 class="program-name" style="color: var(--foundation-primary);">Health Camps & Medical Drives</h4>
+                        <p class="program-description" style="color: var(--foundation-gray);">Free medical checkups, medicine distribution, and health awareness camps.</p>
+                    </div>
+                    
+                    <div class="program-card">
+                        <div class="program-icon">
+                            <i class="fas fa-gavel"></i>
+                        </div>
+                        <h4 class="program-name" style="color: var(--foundation-primary);">Legal Awareness Camps</h4>
+                        <p class="program-description" style="color: var(--foundation-gray);">Workshops on legal rights, documentation help, and free legal consultations.</p>
+                    </div>
+                    
+                    <div class="program-card">
+                        <div class="program-icon">
+                            <i class="fas fa-hands"></i>
+                        </div>
+                        <h4 class="program-name" style="color: var(--foundation-primary);">Community Outreach Activities</h4>
+                        <p class="program-description" style="color: var(--foundation-gray);">Skill development, women empowerment, and senior citizen support programs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Leadership Team Section -->
+        <section class="foundation-section" id="foundationTeam">
+            <div class="container">
+                <div class="foundation-section-title">
+                    <h2 style="color: var(--foundation-primary);">Foundation Leadership Team</h2>
+                </div>
+                
+                <div class="leadership-grid">
+                    <div class="leader-card">
+                        <div class="leader-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h3 class="leader-name" style="color: var(--foundation-primary);">Meraj Khan</h3>
+                        <p class="leader-position" style="color: var(--foundation-secondary);">President, All India</p>
+                        <p class="leader-description" style="color: var(--foundation-gray);">Leading the foundation's vision and strategic direction across India.</p>
+                    </div>
+                    
+                    <div class="leader-card">
+                        <div class="leader-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h3 class="leader-name" style="color: var(--foundation-primary);">Safina M. Khan</h3>
+                        <p class="leader-position" style="color: var(--foundation-secondary);">Director</p>
+                        <p class="leader-description" style="color: var(--foundation-gray);">Overseeing foundation operations and program implementation.</p>
+                    </div>
+                    
+                    <div class="leader-card">
+                        <div class="leader-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h3 class="leader-name" style="color: var(--foundation-primary);">Nafisa M. Khan</h3>
+                        <p class="leader-position" style="color: var(--foundation-secondary);">Co-Director</p>
+                        <p class="leader-description" style="color: var(--foundation-gray);">Supporting strategic planning and community outreach initiatives.</p>
+                    </div>
+                    
+                    <div class="leader-card">
+                        <div class="leader-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h3 class="leader-name" style="color: var(--foundation-primary);">Firoz M.M. Khan</h3>
+                        <p class="leader-position" style="color: var(--foundation-secondary);">Manager</p>
+                        <p class="leader-description" style="color: var(--foundation-gray);">Managing day-to-day operations and program coordination.</p>
+                    </div>
+                    
+                    <div class="leader-card">
+                        <div class="leader-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h3 class="leader-name" style="color: var(--foundation-primary);">Anisa M. Khan</h3>
+                        <p class="leader-position" style="color: var(--foundation-secondary);">Member</p>
+                        <p class="leader-description" style="color: var(--foundation-gray);">Contributing to program development and volunteer coordination.</p>
+                    </div>
+                    
+                    <div class="leader-card">
+                        <div class="leader-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h3 class="leader-name" style="color: var(--foundation-primary);">Fahad M.M. Khan</h3>
+                        <p class="leader-position" style="color: var(--foundation-secondary);">Member</p>
+                        <p class="leader-description" style="color: var(--foundation-gray);">Supporting fundraising and community engagement activities.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Donations Section -->
+        <section class="foundation-section" id="foundationDonate">
+            <div class="container">
+                <div class="foundation-section-title">
+                    <h2 style="color: var(--foundation-primary);">Support Our Cause</h2>
+                </div>
+                
+                <div class="donations-info">
+                    <div>
+                        <h3 style="color: var(--foundation-primary); margin-bottom: 20px; font-size: 1.5rem;">Your Donation Makes a Difference</h3>
+                        <p style="color: var(--foundation-gray); margin-bottom: 25px; line-height: 1.7;">
+                            Your generous donations help us run all foundation programs and reach more people in need. 
+                            Every contribution, big or small, directly supports our initiatives in education, healthcare, 
+                            legal awareness, and community welfare.
+                        </p>
+                        
+                        <div style="background: var(--foundation-light); padding: 25px; border-radius: 4px; margin-bottom: 30px; border-left: 4px solid var(--foundation-primary);">
+                            <h4 style="color: var(--foundation-primary); margin-bottom: 15px;">Why Donate to Bayjeed Foundation?</h4>
+                            <ul style="color: var(--foundation-gray); padding-left: 20px;">
+                                <li style="margin-bottom: 10px;">100% of funds used for charitable purposes</li>
+                                <li style="margin-bottom: 10px;">Transparent operations and regular updates</li>
+                                <li style="margin-bottom: 10px;">Direct impact on underprivileged communities</li>
+                                <li>Tax benefits under 80G (application in process)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 style="color: var(--foundation-primary); margin-bottom: 20px; font-size: 1.5rem;">Donation Methods</h3>
+                        <p style="color: var(--foundation-gray); margin-bottom: 25px;">
+                            We accept both one-time and monthly donations. All funds are used solely for charitable purposes.
+                        </p>
+                        
+                        <div class="donation-methods">
+                            <div class="donation-method">
+                                <div class="donation-icon">
+                                    <i class="fas fa-mobile-alt"></i>
+                                </div>
+                                <div>
+                                    <strong style="color: var(--foundation-primary);">UPI Payment</strong>
+                                    <p style="color: var(--foundation-gray);">bayjeedfoundation@upi</p>
+                                </div>
+                            </div>
+                            
+                            <div class="donation-method">
+                                <div class="donation-icon">
+                                    <i class="fas fa-university"></i>
+                                </div>
+                                <div>
+                                    <strong style="color: var(--foundation-primary);">Bank Transfer</strong>
+                                    <p style="color: var(--foundation-gray);">Account details provided on request</p>
+                                </div>
+                            </div>
+                            
+                            <div class="donation-method">
+                                <div class="donation-icon">
+                                    <i class="fas fa-credit-card"></i>
+                                </div>
+                                <div>
+                                    <strong style="color: var(--foundation-primary);">Online Payment Gateway</strong>
+                                    <p style="color: var(--foundation-gray);">Secure online donation portal</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Funds Utilization Section -->
+        <section class="funds-utilization foundation-section" id="foundationFunds">
+            <div class="container">
+                <div class="foundation-section-title">
+                    <h2 style="color: var(--foundation-primary);">Utilization of Funds</h2>
+                </div>
+                
+                <p style="text-align: center; color: var(--foundation-gray); max-width: 800px; margin: 0 auto 40px; line-height: 1.7;">
+                    We maintain complete transparency in how every rupee donated is utilized. Here's how your contributions are allocated:
+                </p>
+                
+                <div class="utilization-grid">
+                    <div class="utilization-item">
+                        <div class="utilization-percentage" style="color: var(--foundation-primary);">40%</div>
+                        <div class="utilization-name" style="color: var(--foundation-secondary);">Education Programs</div>
+                        <p class="utilization-desc" style="color: var(--foundation-gray);">Scholarships, books, learning materials, and educational workshops</p>
+                    </div>
+                    
+                    <div class="utilization-item">
+                        <div class="utilization-percentage" style="color: var(--foundation-primary);">30%</div>
+                        <div class="utilization-name" style="color: var(--foundation-secondary);">Healthcare Initiatives</div>
+                        <p class="utilization-desc" style="color: var(--foundation-gray);">Medical camps, medicines, health awareness programs</p>
+                    </div>
+                    
+                    <div class="utilization-item">
+                        <div class="utilization-percentage" style="color: var(--foundation-primary);">20%</div>
+                        <div class="utilization-name" style="color: var(--foundation-secondary);">Legal Awareness</div>
+                        <p class="utilization-desc" style="color: var(--foundation-gray);">Workshops, documentation support, legal aid camps</p>
+                    </div>
+                    
+                    <div class="utilization-item">
+                        <div class="utilization-percentage" style="color: var(--foundation-primary);">10%</div>
+                        <div class="utilization-name" style="color: var(--foundation-secondary);">Operational Expenses</div>
+                        <p class="utilization-desc" style="color: var(--foundation-gray);">Program execution, administration, and outreach</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Foundation Section -->
+        <section class="foundation-contact-section foundation-section" id="foundationContact">
+            <div class="container">
+                <div class="foundation-section-title">
+                    <h2 style="color: var(--foundation-primary);">Contact Us</h2>
+                </div>
+                
+                <div class="foundation-contact-container">
+                    <div class="foundation-contact-info">
+                        <h3 style="color: var(--foundation-primary);">Get in Touch</h3>
+                        
+                        <div class="foundation-contact-details">
+                            <div class="foundation-contact-item">
+                                <div class="foundation-contact-icon" style="color: var(--foundation-primary);">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <strong style="color: var(--foundation-primary);">Foundation Address</strong>
+                                <p class="address-text" style="color: var(--foundation-gray);">
+                                    Shop No.08, B Wing, Dheeraj Arma Rehab Building,<br>
+                                    Anant Kanekar Marg, Beside M.S.E.B,<br>
+                                    Bandra East, Mumbai - 400051
+                                </p>
+                            </div>
+                            
+                            <div class="foundation-contact-item">
+                                <div class="foundation-contact-icon" style="color: var(--foundation-primary);">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <strong style="color: var(--foundation-primary);">Contact Number</strong>
+                                <p style="color: var(--foundation-gray);">+91 9987922486 (Meraj Khan - President)</p>
+                            </div>
+                            
+                            <div class="foundation-contact-item">
+                                <div class="foundation-contact-icon" style="color: var(--foundation-primary);">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <strong style="color: var(--foundation-primary);">Email Address</strong>
+                                <p class="email-address" style="color: var(--foundation-primary); font-weight: 600;">bayjeedfoundation786@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="foundation-leadership">
+                            <strong style="color: var(--foundation-primary);">Foundation Leadership</strong>
+                            <p style="margin-top: 10px; color: var(--foundation-gray);">Meraj Khan - <span class="position-title" style="color: var(--foundation-secondary);">President, All India</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="foundation-contact-form">
+                        <form id="foundationContactForm">
+                            <input type="text" placeholder="Your Full Name" required>
+                            <input type="tel" placeholder="Phone Number" required>
+                            <input type="email" placeholder="Email Address" required>
+                            <select required>
+                                <option value="">Select Purpose</option>
+                                <option value="donation">Donation Inquiry</option>
+                                <option value="volunteer">Volunteer Opportunity</option>
+                                <option value="support">Seek Support/Assistance</option>
+                                <option value="collaboration">Collaboration/Partnership</option>
+                                <option value="other">Other Inquiry</option>
+                            </select>
+                            <textarea placeholder="Your Message or Inquiry" required></textarea>
+                            <button type="submit">
+                                <i class="fas fa-paper-plane" style="margin-right: 10px;"></i>Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Foundation Footer -->
+        <footer class="foundation-footer" style="background: var(--foundation-primary);">
+            <div class="container">
+                <div class="footer-container">
+                    <div class="foundation-footer-column footer-column">
+                        <div class="foundation-footer-logo" style="color: var(--white);">BAYJEED <span style="color: var(--white);">FOUNDATION</span></div>
+                        <p style="color: rgba(255, 255, 255, 0.9);">Non-profit organization working for social welfare across India for over 10 years. Empowering individuals through education, healthcare, legal awareness, and community support.</p>
+                        <p style="color: var(--white); font-weight: 500;">WORKING FOR ALL OVER INDIA SINCE 10 YEARS</p>
+                    </div>
+                    
+                    <div class="foundation-footer-column footer-column">
+                        <h3 style="color: var(--white);">Quick Links</h3>
+                        <ul class="foundation-footer-links footer-links">
+                            <li><a href="#foundationHome">Home</a></li>
+                            <li><a href="#foundationAbout">About Foundation</a></li>
+                            <li><a href="#foundationMission">Mission & Vision</a></li>
+                            <li><a href="#foundationFocus">Focus Areas</a></li>
+                            <li><a href="#foundationPrograms">Programs</a></li>
+                            <li><a href="#foundationTeam">Leadership Team</a></li>
+                            <li><a href="#foundationDonate">Donate</a></li>
+                            <li><a href="#foundationContact">Contact</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="foundation-footer-column footer-column">
+                        <h3 style="color: var(--white);">Contact Information</h3>
+                        <p><i class="fas fa-phone" style="color: var(--white); margin-right: 15px;"></i> +91 9987922486</p>
+                        <p><i class="fas fa-envelope" style="color: var(--white); margin-right: 15px;"></i> <span class="email-address" style="color: var(--white);">bayjeedfoundation786@gmail.com</span></p>
+                        <p><i class="fas fa-map-marker-alt" style="color: var(--white); margin-right: 15px;"></i> <span class="address-text" style="color: rgba(255, 255, 255, 0.9);">Bandra East, Mumbai 400051</span></p>
+                    </div>
+                </div>
+                
+                <div class="foundation-copyright copyright">
+                    <p style="color: rgba(255, 255, 255, 0.7);">&copy; <span class="currentYear"></span> Bayjeed Foundation. All Rights Reserved.</p>
+                    <p style="margin-top: 10px; color: rgba(255, 255, 255, 0.7);">Non-Profit Organization | Registration Applied | Transparency & Ethics Committed</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Back to Gateway Button (Fixed) -->
+    <a href="#" class="back-to-gateway" id="backToGatewayBtn" style="display: none;">
+        <i class="fas fa-home"></i>
+    </a>
+
+    <script>
+        // DOM Elements
+        const gatewayPage = document.getElementById('gatewayPage');
+        const associatesContent = document.getElementById('associatesContent');
+        const foundationContent = document.getElementById('foundationContent');
+        const backToGatewayBtn = document.getElementById('backToGatewayBtn');
+        
+        // Navigation Elements
+        const globalLogo = document.getElementById('globalLogo');
+        const showGateway = document.getElementById('showGateway');
+        const showAssociates = document.getElementById('showAssociates');
+        const showFoundation = document.getElementById('showFoundation');
+        
+        // Card Buttons
+        const selectAssociates = document.getElementById('selectAssociates');
+        const selectFoundation = document.getElementById('selectFoundation');
+        const associatesCard = document.getElementById('associatesCard');
+        const foundationCard = document.getElementById('foundationCard');
+        
+        // Global Mobile Menu
+        const globalMobileMenuBtn = document.getElementById('globalMobileMenuBtn');
+        const globalNav = document.getElementById('globalNav');
+        
+        // Function to show gateway page
+        function showGatewayPage() {
+            gatewayPage.style.display = 'flex';
+            associatesContent.classList.remove('active');
+            foundationContent.classList.remove('active');
+            backToGatewayBtn.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            
+            // Update active state in global nav
+            document.querySelectorAll('.global-nav a').forEach(link => {
+                link.classList.remove('active');
+            });
+        }
+        
+        // Function to show associates content
+        function showAssociatesPage() {
+            gatewayPage.style.display = 'none';
+            associatesContent.classList.add('active');
+            foundationContent.classList.remove('active');
+            backToGatewayBtn.style.display = 'flex';
+            
+            // Update active state in global nav
+            document.querySelectorAll('.global-nav a').forEach(link => {
+                link.classList.remove('active');
+            });
+            showAssociates.classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+        
+        // Function to show foundation content
+        function showFoundationPage() {
+            gatewayPage.style.display = 'none';
+            associatesContent.classList.remove('active');
+            foundationContent.classList.add('active');
+            backToGatewayBtn.style.display = 'flex';
+            
+            // Update active state in global nav
+            document.querySelectorAll('.global-nav a').forEach(link => {
+                link.classList.remove('active');
+            });
+            showFoundation.classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+        
+        // Event Listeners for Global Navigation
+        globalLogo.addEventListener('click', function(e) {
+            e.preventDefault();
+            showGatewayPage();
+        });
+        
+        showGateway.addEventListener('click', function(e) {
+            e.preventDefault();
+            showGatewayPage();
+        });
+        
+        showAssociates.addEventListener('click', function(e) {
+            e.preventDefault();
+            showAssociatesPage();
+        });
+        
+        showFoundation.addEventListener('click', function(e) {
+            e.preventDefault();
+            showFoundationPage();
+        });
+        
+        // Event Listeners for Card Buttons
+        selectAssociates.addEventListener('click', showAssociatesPage);
+        selectFoundation.addEventListener('click', showFoundationPage);
+        
+        // Event Listeners for Card Clicks (entire card)
+        associatesCard.addEventListener('click', function(e) {
+            if (!e.target.classList.contains('select-btn')) {
+                showAssociatesPage();
+            }
+        });
+        
+        foundationCard.addEventListener('click', function(e) {
+            if (!e.target.classList.contains('select-btn')) {
+                showFoundationPage();
+            }
+        });
+        
+        // Back to Gateway Button
+        backToGatewayBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            showGatewayPage();
+        });
+        
+        // Global Mobile Menu Toggle
+        globalMobileMenuBtn.addEventListener('click', () => {
+            globalNav.classList.toggle('active');
+            globalMobileMenuBtn.innerHTML = globalNav.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.global-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                globalNav.classList.remove('active');
+                globalMobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Set current year
+        document.querySelectorAll('.currentYear').forEach(el => {
+            el.textContent = new Date().getFullYear();
+        });
+        
+        // Bayjeed & Associates specific JavaScript
+        // Mobile Menu Toggle for Associates
+        const associatesMobileMenuBtn = document.querySelector('.associates-mobile-menu-btn');
+        const associatesNavMenu = document.getElementById('associatesNavMenu');
+        
+        if (associatesMobileMenuBtn && associatesNavMenu) {
+            associatesMobileMenuBtn.addEventListener('click', () => {
+                associatesNavMenu.classList.toggle('active');
+                associatesMobileMenuBtn.innerHTML = associatesNavMenu.classList.contains('active') 
+                    ? '<i class="fas fa-times"></i>' 
+                    : '<i class="fas fa-bars"></i>';
+            });
+            
+            // Close mobile menu when clicking a link
+            document.querySelectorAll('#associatesNavMenu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    associatesNavMenu.classList.remove('active');
+                    associatesMobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                });
+            });
+        }
+        
+        // Form submission for Associates
+        const associatesConsultationForm = document.getElementById('associatesConsultationForm');
+        if (associatesConsultationForm) {
+            associatesConsultationForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your consultation request. Our legal team will contact you within 24 hours.');
+                this.reset();
+            });
+        }
+        
+        // Form submission for Foundation
+        const foundationContactForm = document.getElementById('foundationContactForm');
+        if (foundationContactForm) {
+            foundationContactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for contacting Bayjeed Foundation. Our team will respond to your inquiry within 48 hours.');
+                this.reset();
+            });
+        }
+        
+        // Smooth scrolling for anchor links within Associates
+        document.querySelectorAll('#associatesContent a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                // Check if it's an internal link within Associates
+                if (targetId.startsWith('#associates')) {
+                    e.preventDefault();
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+        
+        // Smooth scrolling for anchor links within Foundation
+        document.querySelectorAll('#foundationContent a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                // Check if it's an internal link within Foundation
+                if (targetId.startsWith('#foundation')) {
+                    e.preventDefault();
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+        
+        // Header scroll effect for Global Header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.global-header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.08)';
+            }
+        });
+        
+        // Check URL hash on page load
+        window.addEventListener('load', function() {
+            const hash = window.location.hash;
+            if (hash === '#associates') {
+                showAssociatesPage();
+            } else if (hash === '#foundation') {
+                showFoundationPage();
+            }
+        });
+    </script>
+</body>
+</html>
