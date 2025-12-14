@@ -462,23 +462,49 @@
         }
 
         .foundation-about-image {
-            height: 400px;
+            height: 450px;
             background: linear-gradient(135deg, var(--foundation-light), var(--white));
             border: 1px solid #E9ECEF;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             color: var(--foundation-gray);
             font-size: 1.1rem;
             position: relative;
             border-radius: 4px;
             overflow: hidden;
+            padding: 0;
         }
 
         .foundation-about-image img {
             width: 100%;
-            height: 100%;
+            height: 85%;
             object-fit: cover;
+        }
+
+        .foundation-image-caption {
+            width: 100%;
+            text-align: center;
+            padding: 15px;
+            background: linear-gradient(135deg, rgba(237, 242, 247, 0.9), rgba(255, 255, 255, 0.9));
+            border-top: 1px solid var(--foundation-light);
+        }
+
+        .foundation-image-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--foundation-primary);
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .foundation-image-designation {
+            color: var(--foundation-secondary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         /* Mission Vision */
@@ -1274,23 +1300,49 @@
         }
 
         .about-image {
-            height: 500px;
+            height: 530px;
             background: linear-gradient(135deg, var(--gray-light), #FFFFFF);
             border: 1px solid #E9ECEF;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             color: var(--gray-medium);
             font-size: 1.1rem;
             position: relative;
             border-radius: 4px;
             overflow: hidden;
+            padding: 0;
         }
 
         .about-image img {
             width: 100%;
-            height: 100%;
+            height: 85%;
             object-fit: cover;
+        }
+
+        .image-caption {
+            width: 100%;
+            text-align: center;
+            padding: 15px;
+            background: linear-gradient(135deg, rgba(248, 249, 250, 0.9), rgba(255, 255, 255, 0.9));
+            border-top: 1px solid #E9ECEF;
+        }
+
+        .image-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--navy);
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .image-designation {
+            color: var(--gold-dark);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         /* Team Section */
@@ -1785,7 +1837,11 @@
                     <div class="about-image">
                         <img src="https://raw.githubusercontent.com/Bayjeed-Group/Bayjeed-Group/main/Gemini_Generated_Image_8y3gxb8y3gxb8y3g.png" 
                              alt="Meraj Khan - Founder, Bayjeed & Associates"
-                             style="width: 100%; height: 100%; object-fit: cover; border-radius: 4px;">
+                             style="width: 100%; height: 85%; object-fit: cover;">
+                        <div class="image-caption">
+                            <div class="image-name">MERAJ KHAN</div>
+                            <div class="image-designation">Principal Legal Consultant</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2083,7 +2139,11 @@
                     <div class="foundation-about-image">
                         <img src="https://raw.githubusercontent.com/Bayjeed-Group/Bayjeed-Group/main/Gemini_Generated_Image_8y3gxb8y3gxb8y3g.png" 
                              alt="Meraj Khan - President, Bayjeed Foundation"
-                             style="width: 100%; height: 100%; object-fit: cover; border-radius: 4px;">
+                             style="width: 100%; height: 85%; object-fit: cover;">
+                        <div class="foundation-image-caption">
+                            <div class="foundation-image-name">MERAJ KHAN</div>
+                            <div class="foundation-image-designation">President, All India</div>
+                        </div>
                     </div>
                 </div>
             </div>
