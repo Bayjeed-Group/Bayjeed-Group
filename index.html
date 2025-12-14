@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bayjeed Group</title>
+    <title>Bayjeed Group | Legal Excellence & Social Welfare</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -72,6 +72,14 @@
             font-weight: 700;
             color: var(--navy);
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .global-logo img {
+            height: 40px;
+            width: auto;
         }
 
         .global-logo span {
@@ -120,6 +128,37 @@
             background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
             padding: 100px 20px;
             text-align: center;
+        }
+
+        .gateway-logo-container {
+            margin-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .gateway-group-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .gateway-group-logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .gateway-group-logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        .gateway-group-logo-text span {
+            color: var(--gold);
         }
 
         .gateway-title {
@@ -174,22 +213,11 @@
             border-top-color: var(--foundation-secondary);
         }
 
-        .org-icon {
-            width: 80px;
+        .org-logo {
             height: 80px;
-            background: var(--gold-light);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: auto;
             margin-bottom: 25px;
-            color: var(--gold-dark);
-            font-size: 2rem;
-        }
-
-        .org-card.foundation .org-icon {
-            background: var(--foundation-light);
-            color: var(--foundation-primary);
+            object-fit: contain;
         }
 
         .org-name {
@@ -314,13 +342,11 @@
             text-align: center;
         }
 
-        .foundation-logo-main {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--foundation-primary);
-            letter-spacing: 0.5px;
-            margin-bottom: 5px;
+        .foundation-logo-image {
+            height: 70px;
+            width: auto;
+            margin-bottom: 15px;
+            object-fit: contain;
         }
 
         .foundation-logo-tagline {
@@ -329,7 +355,14 @@
             letter-spacing: 2px;
             text-transform: uppercase;
             font-weight: 500;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
+        }
+
+        .foundation-logo-subtitle {
+            color: var(--foundation-primary);
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-top: 5px;
         }
 
         .foundation-hero {
@@ -1103,20 +1136,14 @@
         .associates-logo-container {
             display: flex;
             flex-direction: column;
+            align-items: center;
         }
 
-        .associates-logo-main {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--navy);
-            letter-spacing: 0.5px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .associates-logo-main span {
-            color: var(--gold);
+        .associates-logo-image {
+            height: 70px;
+            width: auto;
+            margin-bottom: 10px;
+            object-fit: contain;
         }
 
         .associates-logo-tagline {
@@ -1125,7 +1152,7 @@
             letter-spacing: 2px;
             text-transform: uppercase;
             font-weight: 500;
-            margin-top: 3px;
+            margin-top: 5px;
         }
 
         /* Navigation for Associates */
@@ -1719,7 +1746,10 @@
     <!-- Global Header -->
     <header class="global-header">
         <div class="container global-header-container">
-            <a href="#" class="global-logo" id="globalLogo">BAYJEED <span>GROUP</span></a>
+            <a href="#" class="global-logo" id="globalLogo">
+                <img src="https://raw.githubusercontent.com/Bayjeed-Group/Bayjeed-Group/main/BA%20(1).png" alt="Bayjeed Group Logo">
+                <span>GROUP</span>
+            </a>
             
             <button class="global-mobile-menu-btn" id="globalMobileMenuBtn">
                 <i class="fas fa-bars"></i>
@@ -1736,16 +1766,21 @@
     <!-- Gateway Page (Initial View) -->
     <div class="gateway-page" id="gatewayPage">
         <div class="container">
-            <h1 class="gateway-title">Welcome to Bayjeed Group</h1>
+            <div class="gateway-logo-container">
+                <div class="gateway-group-logo">
+                    <img src="https://raw.githubusercontent.com/Bayjeed-Group/Bayjeed-Group/main/BA%20(1).png" alt="Bayjeed Group Logo">
+                    <div class="gateway-group-logo-text">BAYJEED <span>GROUP</span></div>
+                </div>
+                <h1 class="gateway-title">Welcome to Bayjeed Group</h1>
+            </div>
+            
             <p class="gateway-subtitle">
                 Two organizations, one vision of excellence. Choose the entity you wish to explore:
             </p>
             
             <div class="organization-options">
                 <div class="org-card" id="associatesCard">
-                    <div class="org-icon">
-                        <i class="fas fa-balance-scale"></i>
-                    </div>
+                    <img src="https://raw.githubusercontent.com/Bayjeed-Group/Bayjeed-Group/main/BA%20(1).png" alt="Bayjeed & Associates Logo" class="org-logo">
                     <h2 class="org-name">Bayjeed & Associates</h2>
                     <p class="org-tagline">Advocates & Legal Consultants</p>
                     <p class="org-description">
@@ -1757,9 +1792,7 @@
                 </div>
                 
                 <div class="org-card foundation" id="foundationCard">
-                    <div class="org-icon">
-                        <i class="fas fa-hands-helping"></i>
-                    </div>
+                    <img src="https://raw.githubusercontent.com/Bayjeed-Group/Bayjeed-Group/main/BF%20(1).png" alt="Bayjeed Foundation Logo" class="org-logo">
                     <h2 class="org-name" style="color: var(--foundation-primary);">Bayjeed Foundation</h2>
                     <p class="org-tagline">Non-Profit Organization</p>
                     <p class="org-description">
@@ -1779,7 +1812,7 @@
         <header class="associates-header" style="background-color: var(--white); padding: 20px 0; position: relative; margin-top: 70px;">
             <div class="container header-container">
                 <div class="associates-logo-container">
-                    <div class="associates-logo-main">BAYJEED & <span>ASSOCIATES</span></div>
+                    <img src="https://raw.githubusercontent.com/Bayjeed-Group/Bayjeed-Group/main/BA%20(1).png" alt="Bayjeed & Associates Logo" class="associates-logo-image">
                     <div class="associates-logo-tagline">ADVOCATES & LEGAL CONSULTANTS</div>
                 </div>
                 
@@ -2088,9 +2121,9 @@
         <header class="foundation-header">
             <div class="container">
                 <div class="foundation-logo-container">
-                    <div class="foundation-logo-main">BAYJEED <span style="color: var(--foundation-primary);">FOUNDATION</span></div>
-                    <div class="foundation-logo-tagline" style="color: var(--foundation-secondary);">NON-PROFIT ORGANIZATION</div>
-                    <p style="color: var(--foundation-primary); font-weight: 500; font-size: 0.9rem; margin-top: 5px;">
+                    <img src="https://raw.githubusercontent.com/Bayjeed-Group/Bayjeed-Group/main/BF%20(1).png" alt="Bayjeed Foundation Logo" class="foundation-logo-image">
+                    <div class="foundation-logo-tagline">NON-PROFIT ORGANIZATION</div>
+                    <p class="foundation-logo-subtitle">
                         Working for Social Welfare Across India Since 10 Years
                     </p>
                 </div>
@@ -2612,6 +2645,7 @@
             foundationContent.classList.remove('active');
             backToGatewayBtn.style.display = 'none';
             document.body.style.overflow = 'auto';
+            document.title = "Bayjeed Group | Legal Excellence & Social Welfare";
             
             // Update active state in global nav
             document.querySelectorAll('.global-nav a').forEach(link => {
@@ -2625,6 +2659,7 @@
             associatesContent.classList.add('active');
             foundationContent.classList.remove('active');
             backToGatewayBtn.style.display = 'flex';
+            document.title = "Bayjeed & Associates | Advocates & Legal Consultants";
             
             // Update active state in global nav
             document.querySelectorAll('.global-nav a').forEach(link => {
@@ -2642,6 +2677,7 @@
             associatesContent.classList.remove('active');
             foundationContent.classList.add('active');
             backToGatewayBtn.style.display = 'flex';
+            document.title = "Bayjeed Foundation | Non-Profit Organization";
             
             // Update active state in global nav
             document.querySelectorAll('.global-nav a').forEach(link => {
